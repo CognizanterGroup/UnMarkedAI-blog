@@ -1,11 +1,3 @@
 <template>
-  <div>
-    <AppHeader />
-
-    <UMain>
-      <slot />
-    </UMain>
-
-    <AppFooter />
-  </div>
+  <slot />
 </template>

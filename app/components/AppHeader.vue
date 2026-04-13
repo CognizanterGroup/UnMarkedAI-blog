@@ -1,19 +1,15 @@
 <script setup lang="ts">
 const route = useRoute()
+const { siteName } = useSite()
 
 const items = computed(() => [{
-  label: 'Docs',
-  to: '/docs',
-  active: route.path.startsWith('/docs')
+  label: 'All posts',
+  to: '/',
+  active: route.path === '/'
 }, {
-  label: 'Pricing',
-  to: '/pricing'
-}, {
-  label: 'Blog',
-  to: '/blog'
-}, {
-  label: 'Changelog',
-  to: '/changelog'
+  label: 'About UnmarkedAI',
+  to: 'https://unmarkedai.com',
+  target: '_blank'
 }])
 </script>
 
@@ -23,7 +19,6 @@ const items = computed(() => [{
       <NuxtLink to="/">
         <AppLogo class="w-auto h-6 shrink-0" />
       </NuxtLink>
-      <TemplateMenu />
     </template>
 
     <UNavigationMenu
@@ -35,27 +30,12 @@ const items = computed(() => [{
       <UColorModeButton />
 
       <UButton
-        icon="i-lucide-log-in"
-        color="neutral"
-        variant="ghost"
-        to="/login"
-        class="lg:hidden"
-      />
-
-      <UButton
-        label="Sign in"
-        color="neutral"
-        variant="outline"
-        to="/login"
-        class="hidden lg:inline-flex"
-      />
-
-      <UButton
-        label="Sign up"
-        color="neutral"
+        :label="siteName"
+        icon="i-lucide-sparkles"
         trailing-icon="i-lucide-arrow-right"
         class="hidden lg:inline-flex"
-        to="/signup"
+        to="https://unmarkedai.com"
+        target="_blank"
       />
     </template>
 
@@ -69,17 +49,11 @@ const items = computed(() => [{
       <USeparator class="my-6" />
 
       <UButton
-        label="Sign in"
+        label="Open UnmarkedAI"
         color="neutral"
         variant="subtle"
-        to="/login"
-        block
-        class="mb-3"
-      />
-      <UButton
-        label="Sign up"
-        color="neutral"
-        to="/signup"
+        to="https://unmarkedai.com"
+        target="_blank"
         block
       />
     </template>

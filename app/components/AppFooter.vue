@@ -1,124 +1,39 @@
 <script setup lang="ts">
-const columns = [{
-  label: 'Resources',
-  children: [{
-    label: 'Help center'
-  }, {
-    label: 'Docs'
-  }, {
-    label: 'Roadmap'
-  }, {
-    label: 'Changelog'
-  }]
+const links = [{
+  label: 'Main site',
+  to: 'https://unmarkedai.com'
 }, {
-  label: 'Features',
-  children: [{
-    label: 'Affiliates'
-  }, {
-    label: 'Portal'
-  }, {
-    label: 'Jobs'
-  }, {
-    label: 'Sponsors'
-  }]
-}, {
-  label: 'Company',
-  children: [{
-    label: 'About'
-  }, {
-    label: 'Pricing'
-  }, {
-    label: 'Careers'
-  }, {
-    label: 'Blog'
-  }]
+  label: 'All posts',
+  to: '/'
 }]
-
-const toast = useToast()
-
-const email = ref('')
-const loading = ref(false)
-
-function onSubmit() {
-  loading.value = true
-
-  toast.add({
-    title: 'Subscribed!',
-    description: 'You\'ve been subscribed to our newsletter.'
-  })
-}
 </script>
 
 <template>
-  <USeparator
-    icon="i-simple-icons-nuxtdotjs"
-    class="h-px"
-  />
+  <USeparator class="h-px" />
 
-  <UFooter :ui="{ top: 'border-b border-default' }">
-    <template #top>
-      <UContainer>
-        <UFooterColumns :columns="columns">
-          <template #right>
-            <form @submit.prevent="onSubmit">
-              <UFormField
-                name="email"
-                label="Subscribe to our newsletter"
-                size="lg"
-              >
-                <UInput
-                  v-model="email"
-                  type="email"
-                  class="w-full"
-                  placeholder="Enter your email"
-                >
-                  <template #trailing>
-                    <UButton
-                      type="submit"
-                      size="xs"
-                      color="neutral"
-                      label="Subscribe"
-                    />
-                  </template>
-                </UInput>
-              </UFormField>
-            </form>
-          </template>
-        </UFooterColumns>
-      </UContainer>
-    </template>
+  <footer class="border-t border-default/60">
+    <UContainer class="flex flex-col gap-4 py-8 md:flex-row md:items-center md:justify-between">
+      <div>
+        <p class="font-medium text-highlighted">
+          UnmarkedAI Blog
+        </p>
+        <p class="text-sm text-muted">
+          Practical writing on AI integrity, product trust, and responsible deployment.
+        </p>
+      </div>
 
-    <template #left>
-      <p class="text-muted text-sm">
-        Built with Nuxt UI • © {{ new Date().getFullYear() }}
-      </p>
-    </template>
-
-    <template #right>
-      <UButton
-        to="https://go.nuxt.com/discord"
-        target="_blank"
-        icon="i-simple-icons-discord"
-        aria-label="Nuxt on Discord"
-        color="neutral"
-        variant="ghost"
-      />
-      <UButton
-        to="https://go.nuxt.com/x"
-        target="_blank"
-        icon="i-simple-icons-x"
-        aria-label="Nuxt on X"
-        color="neutral"
-        variant="ghost"
-      />
-      <UButton
-        to="https://github.com/nuxt-ui-templates/saas"
-        target="_blank"
-        icon="i-simple-icons-github"
-        aria-label="Nuxt UI on GitHub"
-        color="neutral"
-        variant="ghost"
-      />
-    </template>
-  </UFooter>
+      <div class="flex items-center gap-3">
+        <UButton
+          v-for="link in links"
+          :key="link.label"
+          :to="link.to"
+          color="neutral"
+          variant="ghost"
+          :target="link.to.startsWith('http') ? '_blank' : undefined"
+        >
+          {{ link.label }}
+        </UButton>
+      </div>
+    </UContainer>
+  </footer>
 </template>

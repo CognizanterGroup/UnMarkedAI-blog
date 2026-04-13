@@ -19,6 +19,37 @@
   --color-green-950: #052E16;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgb(251 146 60 / 0.15), transparent 30%),
+    linear-gradient(180deg, rgb(248 250 252) 0%, rgb(255 255 255) 35%, rgb(248 250 252) 100%);
+}
+
+.dark body {
+  background:
+    radial-gradient(circle at top, rgb(251 146 60 / 0.18), transparent 30%),
+    linear-gradient(180deg, rgb(2 6 23) 0%, rgb(15 23 42) 35%, rgb(2 6 23) 100%);
+}
+
+.prose {
+  --tw-prose-links: var(--ui-color-primary-500);
+  --tw-prose-bold: var(--ui-text-highlighted);
+  max-width: 100%;
+}
+
+.prose img {
+  border-radius: 1rem;
+}
+
+.prose h2,
+.prose h3 {
+  scroll-margin-top: 7rem;
+}
+
 .dark {
   --ui-bg: var(--ui-color-neutral-950);
   --ui-bg-muted: var(--ui-color-neutral-900);

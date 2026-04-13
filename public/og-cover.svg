@@ -1,0 +1,14 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#020617"/>
+  <circle cx="1090" cy="110" r="180" fill="#F97316" fill-opacity="0.2"/>
+  <circle cx="130" cy="520" r="220" fill="#F97316" fill-opacity="0.14"/>
+  <rect x="72" y="72" width="1056" height="486" rx="32" fill="#0F172A" stroke="#1E293B" stroke-width="2"/>
+  <rect x="112" y="112" width="72" height="72" rx="36" fill="#F97316"/>
+  <text x="148" y="158" text-anchor="middle" fill="#020617" font-family="Arial, sans-serif" font-size="34" font-weight="700">U</text>
+  <text x="216" y="155" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="40" font-weight="700">UnmarkedAI</text>
+  <text x="475" y="155" fill="#94A3B8" font-family="Arial, sans-serif" font-size="40" font-weight="500">Blog</text>
+  <text x="112" y="275" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="76" font-weight="700">AI integrity, product trust,</text>
+  <text x="112" y="360" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="76" font-weight="700">and practical systems.</text>
+  <text x="112" y="450" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="32" font-weight="500">Insights for teams deploying generative AI with care.</text>
+  <text x="112" y="516" fill="#94A3B8" font-family="Arial, sans-serif" font-size="24" font-weight="500">https://unmarkedai.com/blog</text>
+</svg>

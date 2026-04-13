@@ -1,3 +1,6 @@
-title: Blog
-description: Discover the latest insights, tutorials, and updates from our team. Stay informed about web development trends, best practices, and innovative solutions.
-navigation.icon: i-lucide-newspaper
+title: Clear thinking for teams building with AI
+description: The official UnmarkedAI blog covering AI integrity, trustworthy content systems, product decisions, and practical implementation notes from the team.
+navigation: false
+seo:
+  title: UnmarkedAI Blog
+  description: Explore practical writing on AI integrity, trustworthy content systems, and product decisions from the UnmarkedAI team.

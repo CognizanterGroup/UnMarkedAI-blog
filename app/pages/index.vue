@@ -1,97 +1,121 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('index', () => queryCollection('index').first())
+const route = useRoute()
+const { resolveCanonical, siteDescription, siteName } = useSite()
 
-const title = page.value?.seo?.title || page.value?.title
-const description = page.value?.seo?.description || page.value?.description
+const { data: page } = await useAsyncData('blog', () => queryCollection('blog').first())
+const { data: posts } = await useAsyncData('blog-posts', () => queryCollection('posts').order('date', 'DESC').all())
+
+const title = computed(() => page.value?.seo?.title || page.value?.title || siteName)
+const description = computed(() => page.value?.seo?.description || page.value?.description || siteDescription)
+const canonical = computed(() => resolveCanonical(route.path))
 
 useSeoMeta({
-  titleTemplate: '',
-  title,
+  title: title,
+  description: description,
   ogTitle: title,
-  description,
-  ogDescription: description
+  ogDescription: description,
+  ogUrl: canonical,
+  twitterTitle: title,
+  twitterDescription: description
+})
+
+useHead({
+  link: [
+    { rel: 'canonical', href: canonical }
+  ],
+  script: [
+    {
+      key: 'blog-jsonld',
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Blog',
+        name: siteName,
+        description: description.value,
+        url: canonical.value
+      })
+    }
+  ]
 })
 </script>
 
 <template>
-  <div v-if="page">
-    <UPageHero
-      :title="page.title"
-      :description="page.description"
-      :links="page.hero.links"
-    >
-      <template #top>
-        <HeroBackground />
-      </template>
+  <div>
+    <AppHeader />
 
-      <template #title>
-        <MDC
-          :value="page.title"
-          unwrap="p"
-        />
-      </template>
+    <UMain>
+      <UContainer class="py-10 sm:py-14">
+        <div class="mb-12 max-w-3xl">
+          <UBadge
+            label="Official blog"
+            variant="subtle"
+            class="mb-4"
+          />
+          <h1 class="text-4xl font-semibold tracking-tight text-highlighted sm:text-5xl">
+            {{ page?.title || siteName }}
+          </h1>
+          <p class="mt-4 text-lg leading-8 text-muted">
+            {{ description }}
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <UButton
+              to="https://unmarkedai.com"
+              target="_blank"
+              trailing-icon="i-lucide-arrow-up-right"
+            >
+              Visit main product
+            </UButton>
+            <UButton
+              to="#latest-posts"
+              color="neutral"
+              variant="outline"
+            >
+              Read latest posts
+            </UButton>
+          </div>
+        </div>
 
-      <PromotionalVideo />
-    </UPageHero>
-
-    <UPageSection
-      v-for="(section, index) in page.sections"
-      :key="index"
-      :title="section.title"
-      :description="section.description"
-      :orientation="section.orientation"
-      :reverse="section.reverse"
-      :features="section.features"
-    >
-      <ImagePlaceholder />
-    </UPageSection>
-
-    <UPageSection
-      :title="page.features.title"
-      :description="page.features.description"
-    >
-      <UPageGrid>
-        <UPageCard
-          v-for="(item, index) in page.features.items"
-          :key="index"
-          v-bind="item"
-          spotlight
-        />
-      </UPageGrid>
-    </UPageSection>
-
-    <UPageSection
-      id="testimonials"
-      :headline="page.testimonials.headline"
-      :title="page.testimonials.title"
-      :description="page.testimonials.description"
-    >
-      <UPageColumns class="xl:columns-4">
-        <UPageCard
-          v-for="(testimonial, index) in page.testimonials.items"
-          :key="index"
-          variant="subtle"
-          :description="testimonial.quote"
-          :ui="{ description: 'before:content-[open-quote] after:content-[close-quote]' }"
+        <section
+          id="latest-posts"
+          class="space-y-6"
         >
-          <template #footer>
-            <UUser
-              v-bind="testimonial.user"
-              size="lg"
+          <div class="flex items-end justify-between gap-4">
+            <div>
+              <p class="text-sm font-medium uppercase tracking-[0.24em] text-primary">
+                Latest posts
+              </p>
+              <h2 class="mt-2 text-2xl font-semibold text-highlighted">
+                Notes from the UnmarkedAI team
+              </h2>
+            </div>
+            <p class="text-sm text-muted">
+              {{ posts?.length || 0 }} published articles
+            </p>
+          </div>
+
+          <UBlogPosts>
+            <UBlogPost
+              v-for="(post, index) in posts"
+              :key="post.path"
+              :to="post.path"
+              :title="post.title"
+              :description="post.description"
+              :image="post.image"
+              :date="new Date(post.date).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' })"
+              :authors="post.authors"
+              :badge="post.badge"
+              :orientation="index === 0 ? 'horizontal' : 'vertical'"
+              :class="[index === 0 && 'col-span-full']"
+              variant="naked"
+              :ui="{
+                description: 'line-clamp-3'
+              }"
             />
-          </template>
-        </UPageCard>
-      </UPageColumns>
-    </UPageSection>
+          </UBlogPosts>
+        </section>
+      </UContainer>
+    </UMain>
 
-    <USeparator />
-
-    <UPageCTA
-      v-bind="page.cta"
-      variant="naked"
-      class="overflow-hidden"
-    >
-      <LazyStarsBg />
-    </UPageCTA>
+    <AppFooter />
   </div>
 </template>

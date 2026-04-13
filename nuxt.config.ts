@@ -17,23 +17,27 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
-  routeRules: {
-    '/docs': { redirect: '/docs/getting-started', prerender: false }
-  },
-
   compatibilityDate: '2024-07-11',
 
+  runtimeConfig: {
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://unmarkedai.com/blog'
+    }
+  },
 
   nitro: {
     prerender: {
-      routes: [
-        '/'
-      ],
+      routes: ['/'],
       crawlLinks: true
     }
   },
 
-    vite: {
+  app: {
+    baseURL: process.env.NUXT_APP_BASE_URL || '/blog/',
+    buildAssetsDir: '/_nuxt/'
+  },
+
+  vite: {
     plugins: [tailwindcss()],
   },
 
@@ -44,9 +48,5 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
-  },
-
-   app: {
-    buildAssetsDir: '/blog-assets/'  // unique prefix
   }
 })
