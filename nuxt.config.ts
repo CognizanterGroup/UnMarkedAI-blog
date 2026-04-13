@@ -46,7 +46,7 @@ export default defineNuxtConfig({
     }
   },
 
-  // app: {
-  //   baseURL: '/',
-  // }
+   app: {
+    buildAssetsDir: '/blog-assets/'  // unique prefix
+  }
 })
