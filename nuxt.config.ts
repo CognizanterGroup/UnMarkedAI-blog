@@ -1,6 +1,6 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import tailwindcss from '@tailwindcss/vite'
-import { microfrontends } from '@vercel/microfrontends/experimental/vite';
+
 
 export default defineNuxtConfig({
   modules: [
@@ -34,7 +34,7 @@ export default defineNuxtConfig({
   },
 
     vite: {
-    plugins: [tailwindcss(), microfrontends()],
+    plugins: [tailwindcss()],
   },
 
   eslint: {
