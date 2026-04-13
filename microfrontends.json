@@ -1,0 +1,11 @@
+{
+  "applications": {
+    "docs": {
+      "routing": [
+        {
+          "paths": ["/app/assets/css/:path*"]
+        }
+      ]
+    }
+  }
+}
