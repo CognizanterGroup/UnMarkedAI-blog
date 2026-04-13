@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/microfrontends.json",
+  "applications": {
+    "un-marked-ai-blog": {
+      "development": {
+        "fallback": "un-marked-ai-blog.vercel.app"
+      }
+    }
+  }
+}
