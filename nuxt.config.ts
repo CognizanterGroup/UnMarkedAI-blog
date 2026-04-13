@@ -12,7 +12,8 @@ export default defineNuxtConfig({
   ],
 
   vite: {
-    plugins: [microfrontends()] // 👈 ADD THIS
+    base: '/blog/',
+    plugins: [microfrontends()]
   },
 
   app: {
