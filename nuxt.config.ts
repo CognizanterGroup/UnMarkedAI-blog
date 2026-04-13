@@ -41,6 +41,6 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: '/blog/',
+    baseURL: '/',
   }
 })
