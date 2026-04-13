@@ -1,5 +1,4 @@
 import { defineNuxtConfig } from 'nuxt/config'
-import { microfrontends } from '@vercel/microfrontends/experimental/vite'
 
 export default defineNuxtConfig({
   modules: [
@@ -39,11 +38,6 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
-  },
-
-  vite: {
-    base: '/blog/',
-    plugins: [microfrontends()]
   },
 
   app: {
