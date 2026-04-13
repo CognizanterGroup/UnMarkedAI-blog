@@ -18,7 +18,7 @@ useHead({
 })
 
 useSeoMeta({
-  titleTemplate: '%s - Nuxt SaaS template',
+  titleTemplate: '%s - UnmarkedAI Blog',
   ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/saas-light.png',
   twitterCard: 'summary_large_image'
 })
