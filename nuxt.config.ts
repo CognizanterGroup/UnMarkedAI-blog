@@ -32,10 +32,9 @@ export default defineNuxtConfig({
     }
   },
 
-  app: {
-    baseURL: process.env.NUXT_APP_BASE_URL || '/blog/',
-    buildAssetsDir: '/_nuxt/'
-  },
+  // app: {
+  //   baseURL: process.env.NUXT_APP_BASE_URL || '/blog/',
+  // },
 
   vite: {
     plugins: [tailwindcss()],

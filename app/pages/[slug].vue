@@ -44,7 +44,7 @@ useHead({
     {
       key: 'post-jsonld',
       type: 'application/ld+json',
-      children: JSON.stringify({
+      textContent: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: title.value,

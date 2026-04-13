@@ -27,7 +27,7 @@ useHead({
     {
       key: 'blog-jsonld',
       type: 'application/ld+json',
-      children: JSON.stringify({
+      textContent: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'Blog',
         name: siteName,

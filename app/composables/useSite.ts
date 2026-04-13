@@ -17,7 +17,9 @@ export function useSite() {
   }
 
   function withBaseAsset(path: string) {
-    return withBase(path, baseUrl.value)
+    const normalizedBase = baseUrl.value === '/' ? '' : baseUrl.value.replace(/\/$/, '')
+    const normalizedPath = path.startsWith('/') ? path : `/${path}`
+    return `${normalizedBase}${normalizedPath}`
   }
 
   return {
