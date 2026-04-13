@@ -1,4 +1,6 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { defineNuxtConfig } from 'nuxt/config'
+import { microfrontends } from '@vercel/microfrontends/experimental/vite'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -9,33 +11,11 @@ export default defineNuxtConfig({
     'nuxt-og-image'
   ],
 
-  devtools: {
-    enabled: true
+  vite: {
+    plugins: [microfrontends()] // 👈 ADD THIS
   },
 
-  css: ['~/assets/css/main.css'],
-
-  routeRules: {
-    '/docs': { redirect: '/docs/getting-started', prerender: false }
-  },
-
-  compatibilityDate: '2024-07-11',
-
-  nitro: {
-    prerender: {
-      routes: [
-        '/'
-      ],
-      crawlLinks: true
-    }
-  },
-
-  eslint: {
-    config: {
-      stylistic: {
-        commaDangle: 'never',
-        braceStyle: '1tbs'
-      }
-    }
+  app: {
+    baseURL: '/blog/',
   }
 })

@@ -17,6 +17,7 @@
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.6.1",
     "@standard-schema/spec": "^1.1.0",
+    "@vercel/microfrontends": "^2.3.2",
     "@vueuse/nuxt": "^14.2.1",
     "better-sqlite3": "^12.8.0",
     "nuxt": "^4.4.2",
