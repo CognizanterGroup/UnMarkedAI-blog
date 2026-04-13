@@ -1,6 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import tailwindcss from '@tailwindcss/vite'
-import { microfrontends } from '@vercel/microfrontends/experimental/vite';
 
 export default defineNuxtConfig({
   modules: [
@@ -24,7 +23,6 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-07-11',
 
-  plugins: [microfrontends()],
 
   nitro: {
     prerender: {
