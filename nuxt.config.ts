@@ -25,6 +25,16 @@ export default defineNuxtConfig({
     }
   },
 
+  fonts: {
+    providers: {
+      bunny: false,
+      fontshare: false,
+      fontsource: false,
+      google: false,
+      googleicons: false
+    }
+  },
+
   nitro: {
     prerender: {
       routes: ['/'],
@@ -32,9 +42,10 @@ export default defineNuxtConfig({
     }
   },
 
-  // app: {
-  //   baseURL: process.env.NUXT_APP_BASE_URL || '/blog/',
-  // },
+  app: {
+    // baseURL: process.env.NUXT_APP_BASE_URL || '/blog/',
+    buildAssetsDir: '/_nuxt/'
+  },
 
   vite: {
     plugins: [tailwindcss()],
